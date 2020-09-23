@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="accountService1" class="com.ithiema.service.impl.AccountServiceImpl1">
+        <constructor-arg name="name" value="lihongfei"></constructor-arg>
+        <constructor-arg name="age" value="24"></constructor-arg>
+        <constructor-arg name="birthday" ref="now"></constructor-arg>
+    </bean>
+
+    <bean id="accountService" class="com.ithiema.service.impl.AccountServiceImpl">
+        <property name="name" value="lihongfei"></property>
+        <property name="age" value="24"></property>
+        <property name="birthday" ref="now"></property>
+    </bean>
+    <bean id="now" class="java.util.Date"></bean>
+
+    <bean id="accountService2" class="com.ithiema.service.impl.AccountServiceImpl2">
+        <property name="myStrs">
+            <array>
+                <value>AAA</value>
+                <value>BBB</value>
+                <value>CCC</value>
+            </array>
+        </property>
+        <property name="mySet">
+            <set>
+                <value>AAA</value>
+                <value>BBB</value>
+                <value>CCC</value>
+            </set>
+        </property>
+        <property name="myList">
+            <list>
+                <value>AAA</value>
+                <value>BBB</value>
+                <value>CCC</value>
+            </list>
+        </property>
+        <property name="myMap" >
+            <map>
+                <entry key="testA" value="aaa"></entry>
+                <entry key="testB" value="bbb"></entry>
+            </map>
+        </property>
+        <property name="myProps">
+            <props>
+                <prop key="testC">CCC</prop>
+                <prop key="testD">DDD</prop>
+
+            </props>
+        </property>
+
+    </bean>
+</beans>
+
+<!--
+    能注入的数据有三类
+        基本类型和String
+        其他bean类型（在配置文件中活着）
+        复杂类型/集合类型
+    注入的方式
+        使用构造函数
+        使用set方法
+        使用 注解提供
+    三种注入的方式：
+-->
